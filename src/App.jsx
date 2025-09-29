@@ -3,6 +3,7 @@ import Task from "./components/Task";
 import Egg from "./components/Egg";
 import Sidebar from "./components/sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Food from "./components/food";
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
         <Routes>
         <Route path="1" element={<Egg />} />
         <Route path="2" element={<Task />} />
+        <Route path="3" element={<Food />} />
         </Routes>  
 
         {/* <Task></Task> */}

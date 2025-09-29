@@ -7,7 +7,7 @@ export default function Sidebar() {
       <nav className="flex flex-col space-y-3">
         <Link to="1" className="hover:bg-gray-700 p-2 rounded">Home</Link>
         <Link to="2" className="hover:bg-gray-700 p-2 rounded">Task</Link>
-        <Link to="/food" className="hover:bg-gray-700 p-2 rounded">Food</Link>
+        <Link to="3" className="hover:bg-gray-700 p-2 rounded">about</Link>
           
       </nav>
     </div>
