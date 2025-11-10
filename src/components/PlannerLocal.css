@@ -1,0 +1,590 @@
+/* ===== 🌈 Global Setup ===== */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  background: linear-gradient(180deg, #fff6f9 0%, #f9fdff 40%, #e8fff7 100%);
+  display: flex;
+  justify-content: center;
+  color: #444;
+  overflow-x: hidden; /* ❌ ไม่มี scrollbar แนวนอน */
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* ===== 🌟 Container ===== */
+.planner-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.planner-header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.planner-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #ff7bac;
+  background: linear-gradient(90deg, #ff8fab, #ffc6ff, #a0e7e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== 🌸 Tabs ===== */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.tab-buttons button {
+  border: none;
+  border-radius: 12px;
+  padding: 8px 18px;
+  background: #ffe5ec;
+  color: #b56576;
+  font-weight: 600;
+  transition: 0.2s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+.tab-buttons button:hover {
+  transform: translateY(-1px);
+  background: #ffd6ff;
+}
+.tab-buttons .active {
+  background: linear-gradient(90deg, #ffb3c6, #ffc6ff);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255,182,193,0.4);
+}
+
+/* ===== ☁️ Planner Cards ===== */
+.planner-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 78vh;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  scrollbar-width: none;
+}
+
+.card {
+  background: #ffffffaa;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 4px 15px rgba(255,182,193,0.2);
+  transition: all 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(255,182,193,0.35);
+}
+.card h3 {
+  color: #b56576;
+  margin-top: 0;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== 🎀 Inputs ===== */
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffd6d6;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #fffafc;
+  transition: 0.2s;
+}
+.input:focus {
+  outline: none;
+  border-color: #ffb3c6;
+  box-shadow: 0 0 4px #ffd6ff;
+}
+
+.add-inline {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 600;
+}
+.btn.pop {
+  background: linear-gradient(90deg, #ff9eb5, #ffc6ff);
+  color: white;
+  box-shadow: 0 3px 8px rgba(255,182,193,0.35);
+}
+.btn.pop:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ===== 🌷 Habit & To-do ===== */
+.habit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.habit.done span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+.list li {
+  background: #fff0f5;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.list li:hover {
+  transform: translateY(-1px);
+  background: #ffe5ec;
+}
+.list li.checked {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.list li.sparkle::after {
+  content: "✨";
+  margin-left: 6px;
+  animation: sparkle 1s ease;
+}
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* ===== 💖 Mood ===== */
+.moods {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.mood-btn {
+  background: #fff;
+  border: 2px solid #ffd6d6;
+  border-radius: 14px;
+  padding: 8px 10px;
+  font-size: 20px;
+  transition: 0.2s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+.mood-btn.active {
+  background: linear-gradient(90deg, #ffb3c6, #ffd6a5);
+  transform: scale(1.15);
+  box-shadow: 0 0 10px #ffd6d6;
+}
+
+/* ===== 💰 Finance Bar ===== */
+.finance-bar {
+  height: 10px;
+  background: #ffe5ec;
+  border-radius: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+.bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.4s;
+}
+.bar.income { background: #a8e6cf; }
+.bar.expense { background: #ffd6a5; position: absolute; top: 0; }
+
+/* ===== 📅 Calendar ===== */
+.calendar-section {
+  background: #ffffffcc;
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 4px 15px rgba(255,182,193,0.25);
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #b56576;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+.calendar-dayname {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+.calendar-cell {
+  height: 48px;
+  border-radius: 14px;
+  background: #fffafc;
+  text-align: center;
+  position: relative;
+  transition: 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.calendar-cell.today {
+  border: 2px solid #ffb3c6;
+}
+.calendar-cell:hover {
+  background: #ffe5ec;
+}
+.day-number {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.day-sticker {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.note-popup {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  padding: 14px;
+  z-index: 999;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+/* ===== 🧹 ปุ่มรีเซ็ตล่างสุด ===== */
+.reset-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 60px;
+}
+.reset-btn-bottom {
+  background: linear-gradient(90deg, #ffb3c6, #ffc6ff);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+  transition: 0.2s;
+}
+.reset-btn-bottom:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ===== 📔 Diary Style ===== */
+.diary-lock, .diary-content {
+  text-align: center;
+}
+.diary-btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+/* ===== 📅 Mini Week Bar ===== */
+.mini-week-bar {
+  margin-top: 14px;
+  background: #fff9fb;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.25);
+}
+.week-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.week-day {
+  width: 38px;
+  height: 50px;
+  background: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: 0.2s;
+}
+.week-day.has-entry {
+  background: #ffe4ec;
+  cursor: pointer;
+}
+.week-day:hover {
+  transform: scale(1.05);
+}
+.mood-dot {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+/* ===== 📊 Mood Chart ===== */
+.chart-wrapper {
+  margin-top: 18px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(255, 182, 193, 0.25);
+}
+.chart-wrapper h4 {
+  text-align: center;
+  color: #b56576;
+  margin-bottom: 8px;
+}
+
+/* ===== 😄 Mood Buttons ===== */
+.mood-select {
+  margin: 10px 0;
+}
+.mood-select p {
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #b56576;
+}
+.mood-select .mood-btn {
+  margin: 0 3px;
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.mood-select .mood-btn.active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px #ffb3c6);
+}
+.calendar-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-header h2 {
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.btn-nav {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ff8fab;
+}
+
+.calendar-mode-switch {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.mode-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #ffe6ee;
+  color: #b56576;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mode-btn.active {
+  background: #ffb3c6;
+  color: white;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-dayname {
+  text-align: center;
+  font-weight: bold;
+  color: #555;
+}
+
+.calendar-cell {
+  height: 70px;
+  border-radius: 10px;
+  text-align: center;
+  background: #fafafa;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.calendar-cell:hover {
+  background: #fff0f5;
+}
+
+.calendar-cell.today {
+  border: 2px solid #ff8fab;
+}
+
+.calendar-cell.selected {
+  background: #ffb3c6;
+  color: white;
+}
+
+.day-number {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.day-sticker {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 1.1rem;
+}
+
+.note-popup {
+  margin-top: 1rem;
+  background: #fff6f9;
+}
+
+.sticker-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.sticker-btn {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sticker-btn.active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px #ff9bbb);
+}
+.card .note {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.card .calendar-section {
+  background: #fff9fb;
+  border: 2px dashed #ffc4d6;
+  border-radius: 16px;
+  padding: 0.8rem;
+}
+/* ===== Sticker Select Bar (แนวนอนสมส่วน) ===== */
+.sticker-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+/* ปรับสไตล์ปุ่มอิโมจิ */
+.sticker-btn {
+  font-size: 1.8rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.sticker-btn.active {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 6px #ffb3c6);
+}
+
+.sticker-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Sticker Select Bar (แนวนอนคงที่ ไม่เลื่อน) ===== */
+.sticker-select {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px;
+}
+
+/* ===== Emoji Button ===== */
+.sticker-btn {
+  font-size: 1.8rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.sticker-btn.active {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 8px #ff9fc6);
+}
+
+.sticker-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ให้แทบอิโมจิขยายพอดีจอมือถือ */
+@media (max-width: 480px) {
+  .sticker-select {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+}
+
+
